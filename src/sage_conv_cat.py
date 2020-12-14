@@ -13,7 +13,7 @@ class SAGEConvCat(MessagePassing):
     """
     *Note: Source function taken from PyTorch Geometric and modified such that
     embeddings are first concatenated and then reduced to out_channel size as
-    per the original GraphSAGE paper
+    per the original GraphSAGE paper.
     
     The GraphSAGE operator from the `"Inductive Representation Learning on
     Large Graphs" <https://arxiv.org/abs/1706.02216>`_ paper
@@ -33,6 +33,14 @@ class SAGEConvCat(MessagePassing):
             an additive bias. (default: :obj:`True`)
         **kwargs (optional): Additional arguments of
             :class:`torch_geometric.nn.conv.MessagePassing`.
+
+    PyTorch Geometric citation:
+    @inproceedings{Fey/Lenssen/2019,
+      title={Fast Graph Representation Learning with {PyTorch Geometric}},
+      author={Fey, Matthias and Lenssen, Jan E.},
+      booktitle={ICLR Workshop on Representation Learning on Graphs and Manifolds},
+      year={2019},
+    }
     """
     
     def __init__(self, in_channels: Union[int, Tuple[int, int]],
