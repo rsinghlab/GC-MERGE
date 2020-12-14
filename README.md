@@ -10,10 +10,10 @@ In this repository, we provide two programs s well as example datasets. The firs
 numpy, sklearn, matplotlib, scipy, cython, POT (note that numpy and cython must be installed prior to POT), torch  
 
 **Folder navivgation:**  
-**1) ./src** contains the source code
-**2) ./src/data** contains raw data files
-**3) ./src/data/E116** contains raw data files and processed data files
-**4) ./src/data/E116/saved_runs** contains outputs from an example run
+**1) ./src** contains the source code  
+**2) ./src/data** contains raw data files  
+**3) ./src/data/E116** contains raw data files and processed data files  
+**4) ./src/data/E116/saved_runs** contains outputs from an example run  
  
 **Note:** We are happy to see any work built using or on top of GC-MERGE. However, we ask that you please make sure to give credit in your code if you are using code from this repository.  
 Bigness, J., Loinaz, X., Patel, S., Larschan, E. & Singh, R. Integrating long-range regulatory interactions to predict gene expression using graph convolutional neural networks. http://biorxiv.org/lookup/doi/10.1101/2020.11.23.394478 (2020) doi:10.1101/2020.11.23.394478.
