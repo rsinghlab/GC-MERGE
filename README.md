@@ -10,8 +10,8 @@ In this repository, we provide two programs s well as example datasets. The firs
 numpy, sklearn, matplotlib, scipy, cython, POT (note that numpy and cython must be installed prior to POT), torch  
 
 **Folder navivgation:**  
-**1) ./src** contains the source code   
-**2) ./src/data** contains raw data files 
+**1) ./src** contains the source code
+**2) ./src/data** contains raw data files
 **3) ./src/data/E116** contains raw data files and processed data files
 **4) ./src/data/E116/saved_runs** contains outputs from an example run
  
