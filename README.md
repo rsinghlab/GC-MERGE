@@ -17,7 +17,7 @@ numpy, sklearn, matplotlib, scipy, cython, POT (note that numpy and cython must 
 Bigness, J., Loinaz, X., Patel, S., Larschan, E. & Singh, R. Integrating long-range regulatory interactions to predict gene expression using graph convolutional neural networks. http://biorxiv.org/lookup/doi/10.1101/2020.11.23.394478 (2020) doi:10.1101/2020.11.23.394478.
   
 **BibTex Citation:**  
-'''
+```
 @article {GC-MERGE_2020,
 	author = {Bigness, Jeremy and Loinaz, Xavier and Patel, Shalin and Larschan, Erica and Singh, Ritambhara},
 	title = {Integrating long-range regulatory interactions to predict gene expression using graph convolutional neural networks},
@@ -28,4 +28,4 @@ Bigness, J., Loinaz, X., Patel, S., Larschan, E. & Singh, R. Integrating long-ra
 	eprint = {https://www.biorxiv.org/content/early/2020/11/23/2020.11.23.394478.full.pdf},
 	journal = {bioRxiv}
 }
-'''
+```
