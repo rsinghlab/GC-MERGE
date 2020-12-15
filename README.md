@@ -10,14 +10,14 @@ In this repository, we provide three programs as well as example datasets. The f
 numpy, scipy, sklearn, pandas, ordered_set, PyTorch, PyTorch Geometric, 
 
 **Folder navivgation:**  
-**1) ./src** contains the source code (.py)
-**2) ./src/data** contains raw data files (.csv)
-**3) ./src/data/E116** contains raw data files (.count, .txt) and processed data files (.npy, .npz, .pkl)
-**4) ./src/data/E116/saved_runs** contains outputs from an example run (.pt, .csv, .txt)
+**1) ./src** contains the source code (.py)  
+**2) ./src/data** contains raw data files (.csv)  
+**3) ./src/data/E116** contains raw data files (.count, .txt) and processed data files (.npy, .npz, .pkl)  
+**4) ./src/data/E116/saved_runs** contains outputs from an example run (.pt, .csv, .txt)  
  
 **Note:** Please kindly cite our work if you make use of GC-MERGE or parts of its codebase in your research.
 
-Bigness, J., Loinaz, X., Patel, S., Larschan, E. & Singh, R. Integrating long-range regulatory interactions to predict gene expression using graph convolutional neural networks. http://biorxiv.org/lookup/doi/10.1101/2020.11.23.394478 (2020) doi:10.1101/2020.11.23.394478.  
+	Bigness, J., Loinaz, X., Patel, S., Larschan, E. & Singh, R. Integrating long-range regulatory interactions to predict gene expression using graph convolutional neural networks. http://biorxiv.org/lookup/doi/10.1101/2020.11.23.394478 (2020) doi:10.1101/2020.11.23.394478.  
   
 **BibTex Citation:**  
 ```
