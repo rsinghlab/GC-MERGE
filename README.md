@@ -4,15 +4,15 @@
 
 GC-MERGE is a Python tool that implements a graph convolutional neural network framework to integrate Hi-C spatial information together with ChIP-seq measurements of histone modifications to predict RNA-seq binarized gene expression. The methodology for this tool is detailed in the pre-print: "Integrating long-range regulatory interactions to predict gene expression using graph convolutional neural networks" (https://www.biorxiv.org/content/10.1101/2020.04.28.066787v2).
 
-In this repository, we provide two programs as well as example datasets. The first program is a preparatory script (process_inputs.py) to process the raw data into a form that can be used by the second program, which is the actual graph convolutional model (run_model.py). Please see the code documentation within each program for additional details.
+In this repository, we provide three programs as well as example datasets. The first program is a preparatory script (process_inputs.py) to process the raw data into a form that can be used by the second program. The second program is the main graph convolutional model (run_model.py), which also calls on an auxiliary script (sage_conv_cat.py). Please see the code documentation within each program for additional details.
 
 **Python packages required:**
 numpy, scipy, sklearn, pandas, ordered_set, PyTorch, PyTorch Geometric, 
 
 **Folder navivgation:**  
 **1) ./src** contains the source code  
-**2) ./src/data** contains raw data files  
-**3) ./src/data/E116** contains raw data files and processed data files  
+**2) ./src/data** contains raw data files (.csv)
+**3) ./src/data/E116** contains raw data files (.count, .txt) and processed data files (.npy, .npz, .pt)
 **4) ./src/data/E116/saved_runs** contains outputs from an example run  
  
 **Note:** Please kindly cite our work if you make use of GC-MERGE or parts of its codebase in your research.
