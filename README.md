@@ -6,8 +6,8 @@ GC-MERGE is a Python tool that implements a graph convolutional neural network f
 
 In this repository, we provide three programs as well as example datasets. The first program is a preparatory script (process_inputs.py) to process the raw data into a form that can be used by the second program. The second program is the main graph convolutional model (run_model.py), which also calls on an auxiliary script (sage_conv_cat.py). Please see the code documentation within each program for additional details.
 
-**Python packages required:**
-numpy, scipy, sklearn, pandas, ordered_set, PyTorch, PyTorch Geometric, 
+**Python packages required:**  
+Numpy, scipy, sklearn, pandas, ordered_set, PyTorch, PyTorch Geometric
 
 **Folder navivgation:**  
 **1) ./src** contains the source code (.py)  
