@@ -12,10 +12,10 @@ Numpy, scipy, sklearn, pandas, ordered_set, PyTorch, PyTorch Geometric
 **Folder navivgation:**  
 **1) ./src** contains the source code (.py)  
 **2) ./src/data** contains raw data files (.csv)  
-**3) ./src/data/E116** contains processed data files (.npy, .npz, .pkl)
+**3) ./src/data/E116** contains processed data files (.npy, .npz, .pkl)  
 **4) ./src/data/E116/saved_runs** contains outputs from an example run (.pt, .csv, .txt)  
 
-**Note**: To run the preparatory script (process_inputs.py) on the GM12878/E116 example cell line, additional raw data files must be downloaded from the Google drive link appended below. Please see the documentation within process_inputs.py for more details about the required files that would need to be downloaded for use with other cell lines. Furthermore, we have provided the processed data files for GM12878/E116, so that the main model (run_model.py) can be directly run on the processed data for the example.
+***Note***:  To run the preparatory script (process_inputs.py) on the GM12878/E116 example cell line, additional raw data files must be downloaded from the Google drive link appended below. Please see the documentation within process_inputs.py for more details about the required files that would need to be downloaded for use with other cell lines. Furthermore, we have provided the processed data files for GM12878/E116, so that the main model (run_model.py) can be directly run on the processed data for the example.
 
 **Google Drive link for additional raw data files:**  
 link  
