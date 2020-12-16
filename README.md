@@ -17,8 +17,7 @@ Numpy, scipy, sklearn, pandas, ordered_set, PyTorch, PyTorch Geometric
 
   * **Note**:  To run the preparatory script (process_inputs.py) on the GM12878/E116 example cell line, additional raw data files must be downloaded from the Google drive link appended below. Please see the documentation within process_inputs.py for more details about the required files that would need to be downloaded for use with other cell lines. Furthermore, we have provided the processed data files for GM12878/E116, so that the main model (run_model.py) can be directly run on the processed data for the example.
 
-**Google Drive link for additional raw data files:**  
-link  
+https://drive.google.com/drive/folders/1pWMZC-3mdkWyAoa6b-CnrHpgjPIyUVZv?usp=sharing
 
 **Citation:**  
 
