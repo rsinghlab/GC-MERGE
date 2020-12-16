@@ -40,5 +40,5 @@ Please kindly cite our work if you make use of GC-MERGE or parts of its codebase
 }
 ```
 
-**BibTex:**  
+**Contact information:**  
 For questions or comments, please contact Jeremy Bigness at jeremy_bigness@brown.edu or the corresponding author, Ritambhara Singh, at ritambhara_singh@brown.edu
