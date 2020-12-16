@@ -20,11 +20,13 @@ Numpy, scipy, sklearn, pandas, ordered_set, PyTorch, PyTorch Geometric
 **Google Drive link for additional raw data files:**  
 link  
 
-**Note:** Please kindly cite our work if you make use of GC-MERGE or parts of its codebase in your research.
+**Citation:**  
+
+Please kindly cite our work if you make use of GC-MERGE or parts of its codebase in your research.
 
 	Bigness, J., Loinaz, X., Patel, S., Larschan, E. & Singh, R. Integrating long-range regulatory interactions to predict gene expression using graph convolutional neural networks. http://biorxiv.org/lookup/doi/10.1101/2020.11.23.394478 (2020) doi:10.1101/2020.11.23.394478.  
   
-**BibTex Citation:**  
+**BibTex:**  
 ```
 @article {GC-MERGE_2020,
 	author = {Bigness, Jeremy and Loinaz, Xavier and Patel, Shalin and Larschan, Erica and Singh, Ritambhara},
