@@ -12,9 +12,13 @@ Numpy, scipy, sklearn, pandas, ordered_set, PyTorch, PyTorch Geometric
 **Folder navivgation:**  
 **1) ./src** contains the source code (.py)  
 **2) ./src/data** contains raw data files (.csv)  
-**3) ./src/data/E116** contains raw data files (.count, .txt) and processed data files (.npy, .npz, .pkl)  
+**3) ./src/data/E116** contains processed data files (.npy, .npz, .pkl)
+- **Note:** To run the preparatory script (process_inputs.py) on the GM12878/E116 example cell line, additional raw data files must be downloaded from the Google drive link appended below. Please see the documentation within process_inputs.py for more details about the required files that would need to be downloaded for use with other cell lines. Furthermore, we have provided the processed data files for GM12878/E116, so that the main model (run_model.py) can be directly run on the processed data for the example. 
 **4) ./src/data/E116/saved_runs** contains outputs from an example run (.pt, .csv, .txt)  
- 
+
+**Google Drive link for additional raw data files:**  
+link  
+
 **Note:** Please kindly cite our work if you make use of GC-MERGE or parts of its codebase in your research.
 
 	Bigness, J., Loinaz, X., Patel, S., Larschan, E. & Singh, R. Integrating long-range regulatory interactions to predict gene expression using graph convolutional neural networks. http://biorxiv.org/lookup/doi/10.1101/2020.11.23.394478 (2020) doi:10.1101/2020.11.23.394478.  
