@@ -11,9 +11,9 @@ Arguments:
     '-e', '--max_epoch', default=1000,type=int) 
     '-lr', '--learning_rate', default=1e-4, type=float)
     '-cn', '--num_graph_conv_layers', default=2, type=int)
-    '-gs', '--graph_conv_embed_size', default=128, type=int)
-    '-ln', '--num_lin_layers', default=2, type=int)
-    '-ls', '--lin_hidden_layer_size', default=128, type=int)
+    '-gs', '--graph_conv_embed_size', default=256, type=int)
+    '-ln', '--num_lin_layers', default=3, type=int)
+    '-ls', '--lin_hidden_layer_size', default=256, type=int)
 
 Processed inputs: 
     In ./data/cell_line subdirectory:
@@ -371,9 +371,9 @@ parser.add_argument('-c', '--cell_line', default='E116', type=str)
 parser.add_argument('-e', '--max_epoch', default=1000,type=int) 
 parser.add_argument('-lr', '--learning_rate', default=1e-4, type=float)
 parser.add_argument('-cn', '--num_graph_conv_layers', default=2, type=int)
-parser.add_argument('-gs', '--graph_conv_embed_size', default=128, type=int)
-parser.add_argument('-ln', '--num_lin_layers', default=2, type=int)
-parser.add_argument('-ls', '--lin_hidden_layer_size', default=128, type=int)
+parser.add_argument('-gs', '--graph_conv_embed_size', default=256, type=int)
+parser.add_argument('-ln', '--num_lin_layers', default=3, type=int)
+parser.add_argument('-ls', '--lin_hidden_layer_size', default=256, type=int)
 
 args = parser.parse_args()
 cell_line = args.cell_line
