@@ -11,9 +11,9 @@ Arguments:
     '-e', '--max_epoch', default=1000,type=int) 
     '-lr', '--learning_rate', default=1e-4, type=float)
     '-cn', '--num_graph_conv_layers', default=2, type=int)
-    '-gs', '--graph_conv_embed_size', default=256, type=int)
-    '-ln', '--num_lin_layers', default=3, type=int)
-    '-ls', '--lin_hidden_layer_size', default=256, type=int)
+    '-gs', '--graph_conv_embed_size', default=128, type=int)
+    '-ln', '--num_lin_layers', default=2, type=int)
+    '-ls', '--lin_hidden_layer_size', default=128, type=int)
 
 Processed inputs: 
     In ./data/cell_line subdirectory:
@@ -371,9 +371,9 @@ parser.add_argument('-c', '--cell_line', default='E116', type=str)
 parser.add_argument('-e', '--max_epoch', default=1000,type=int) 
 parser.add_argument('-lr', '--learning_rate', default=1e-4, type=float)
 parser.add_argument('-cn', '--num_graph_conv_layers', default=2, type=int)
-parser.add_argument('-gs', '--graph_conv_embed_size', default=256, type=int)
-parser.add_argument('-ln', '--num_lin_layers', default=3, type=int)
-parser.add_argument('-ls', '--lin_hidden_layer_size', default=256, type=int)
+parser.add_argument('-gs', '--graph_conv_embed_size', default=128, type=int)
+parser.add_argument('-ln', '--num_lin_layers', default=2, type=int)
+parser.add_argument('-ls', '--lin_hidden_layer_size', default=128, type=int)
 
 args = parser.parse_args()
 cell_line = args.cell_line
@@ -520,10 +520,10 @@ for d in np.arange(len(dataset_list)):
     partial_metrics['Node ID'] = dataset_metrics[0]
     partial_metrics['True Label'] = dataset_metrics[2]
     partial_metrics['Predicted Label'] = dataset_metrics[1]
-    partial_metrics['Classification'] = dataset_metrics[1]*1 + dataset_metrics[1]*2
+    partial_metrics['Classification'] = dataset_metrics[1]*1 + dataset_metrics[2]*2
     partial_metrics['Classification'].replace(to_replace=0, value='TN', inplace=True)
-    partial_metrics['Classification'].replace(to_replace=1, value='FN', inplace=True)
-    partial_metrics['Classification'].replace(to_replace=2, value='FP', inplace=True)
+    partial_metrics['Classification'].replace(to_replace=1, value='FP', inplace=True)
+    partial_metrics['Classification'].replace(to_replace=2, value='FN', inplace=True)
     partial_metrics['Classification'].replace(to_replace=3, value='TP', inplace=True)
     
     if d == 0:
