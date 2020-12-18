@@ -1,0 +1,35 @@
+File name: run_model.py
+Model reference date and time: 2020-12-17-at-19-24-36
+
+Start date: 2020-12-17
+Start time: 19:24
+Total time: 00:01:55
+
+Cell line: E116
+Dataset split:
+Training set: 70%
+Validation set: 15%
+Testing set: 15%
+
+Performance:
+Testing AUC: 0.8916674039283868
+Testing F1: 0.8243512974051896
+Hyperparameters:
+Number of epochs: 1000
+Learning rate :0.0001
+Number of graph convolutional layers: 2
+Graph convolutional embedding size: 256
+Number of linear layers: 3
+Linear hidden layer size: 256
+
+Model's state_dict:
+conv1.lin_l.weight	torch.Size([256, 10])
+conv1.lin_l.bias	torch.Size([256])
+conv2.lin_l.weight	torch.Size([256, 512])
+conv2.lin_l.bias	torch.Size([256])
+lin1.weight	torch.Size([256, 256])
+lin1.bias	torch.Size([256])
+lin2.weight	torch.Size([256, 256])
+lin2.bias	torch.Size([256])
+lin3.weight	torch.Size([2, 256])
+lin3.bias	torch.Size([2])
