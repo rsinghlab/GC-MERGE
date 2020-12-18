@@ -15,13 +15,19 @@ Numpy, scipy, sklearn, pandas, ordered_set, PyTorch, PyTorch Geometric
 **3) ./src/data/E116** contains processed data files (.npy, .npz, .pkl)  
 **4) ./src/data/E116/saved_runs** contains outputs from an example run (.pt, .csv, .txt)  
 
-**Note on datasets:**  
+To run from the user's local machine, the programs assume the directory structure setup is the same as in this repository (except where "E116" is replaced by the name of the relevant cell line).
+
+**Datasets:**  
 To run the preparatory script (process_inputs.py) on the GM12878/E116 example cell line, additional raw data files must be downloaded from the Google drive link appended below. Please see the documentation within process_inputs.py for more details about the required files that would need to be downloaded for use with other cell lines. Furthermore, we have provided the processed data files for GM12878/E116, so that the main model (run_model.py) can be directly run on the processed data for the example.  
 
 https://drive.google.com/drive/folders/1pWMZC-3mdkWyAoa6b-CnrHpgjPIyUVZv?usp=sharing
 
-**Citation:**  
+**Additional Notes:**  
+  *To run the programs, users should have PyTorch, PyTorch Geometric, and PyTorch Sparse already installed in their virtual environments. Code was tested on the following package versions: torch 1.6.0, torch_geometric 1.6.1, and torch_sparse 0.6.7
+  *To install all other required packages, run pip install -r requirements.txt from the main directory of the cloned repository
+  *If the model is run with default hyperparameters, runtime is approximately 12-24 hours on CPU and <10 minutes on GPU (24 G).  
 
+**Citation:**  
 Please kindly cite our work if you make use of GC-MERGE or parts of its codebase in your research.
 
 	Bigness, J., Loinaz, X., Patel, S., Larschan, E. & Singh, R. Integrating long-range regulatory interactions to predict gene expression using graph convolutional neural networks. http://biorxiv.org/lookup/doi/10.1101/2020.11.23.394478 (2020) doi:10.1101/2020.11.23.394478.  
