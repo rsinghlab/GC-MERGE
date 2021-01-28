@@ -23,7 +23,7 @@ To run the preparatory script (process_inputs.py) on the GM12878/E116 example ce
 https://drive.google.com/drive/folders/1pWMZC-3mdkWyAoa6b-CnrHpgjPIyUVZv?usp=sharing
 
 **Additional Notes:**  
-- To run the tool, users should have PyTorch, PyTorch Geometric, and PyTorch Sparse already installed in their virtual environments. Code was tested on the following package versions: torch 1.6.0, torch_geometric 1.6.1, and torch_sparse 0.6.7.
+- To run the tool, users should have PyTorch, PyTorch Geometric, and PyTorch Sparse already installed in their virtual environments. Code was tested on the following package versions: torch 1.6.0, torch_geometric 1.6.1, and torch_sparse 0.6.7. The version of Python that was used was Python 3.7.9.
 - To install all other required packages, run pip install -r requirements.txt from the main directory of the cloned repository.
 - If the model is run with default hyperparameters, runtime is approximately 12 hours on 32G CPU and <10 minutes on 24G GPU.  
 
