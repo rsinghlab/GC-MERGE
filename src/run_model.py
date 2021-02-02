@@ -7,7 +7,7 @@ Usage: python ./run_model.py [-c <str>] [-e <int>] [-lr <float>] [-rf <int>]
 
 Arguments:
     '-c', '--cell_line', default='E116', type=str)
-    '-e', '--max_epoch', default=1000, type=int)
+    '-me', '--max_epoch', default=1000, type=int)
     '-lr', '--learning_rate', default=1e-4, type=float)
     '-rf', '--regression_flag', default=0, type=int)
 
