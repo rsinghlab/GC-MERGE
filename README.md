@@ -4,7 +4,7 @@
 
 GC-MERGE is a Python tool that implements a graph convolutional neural network framework to integrate spatial genomic information together with histone modification data to predict gene expression. The methodology for this tool is detailed in the pre-print: "Integrating long-range regulatory interactions to predict gene expression using graph convolutional neural networks" (https://www.biorxiv.org/content/10.1101/2020.11.23.394478v3).
 
-In this repository, we provide four programs as well as example datasets for three cell lines. The first program is a preparatory script (process_inputs.py) to process the raw data into a form that can be used by the second program. The second program is the main graph convolutional model (run_model.py), which also calls on a third auxiliary program (sage_conv_cat.py). Please see the code documentation within each program for additional details.
+In this repository, we provide four programs as well as example datasets for three cell lines (E116/GM1287, E123/K562, and E122/HUVEC). The first program is a preparatory script (process_inputs_.py) to process the raw data into a form that can be used by the second program. The second program is the main program (run_models_.py), which also calls on two more auxiliary programs (model_classes_.py and sage_conv_cat_.py). Please see the code documentation within each program for additional details.
 
 **Python packages required:**  
 Numpy, scipy, sklearn, pandas, ordered_set, PyTorch, PyTorch Geometric
@@ -12,21 +12,22 @@ Numpy, scipy, sklearn, pandas, ordered_set, PyTorch, PyTorch Geometric
 **Folder navivgation:**  
 **1) ./src** contains the source code (.py) as well as spreadsheets to which model evaluation metrics and statistics are written to when running our model.
 **2) ./src/data** contains raw data files (.csv).  
-**3) ./src/data/E116** contains processed data files (.npy, .npz, .pkl). Same thing applies for cell lines E122 and E123.
-**4) ./src/data/E116/saved_runs** contains outputs from an example run (.pt, .csv, .txt). Same thing applies for cell lines E122 and E123.
+**3) ./src/data/E116** contains processed data files (.npy, .npz, .pkl) for cell line E116 and analogously for cell lines E122 and E123.
+**4) ./src/data/E116/saved_runs** contains outputs from an example run (.pt, .csv, .txt) and analogously for cell lines E122 and E123.
 
 To run the tool from the user's local machine, the setup of the directory structure should be the same as in this repository (except where "E116" is replaced by the name of the relevant cell line).
 
-To run the model, simply run the command below from the src directory:
+To run the model, simply run the program on the command line from the src direcotry.
 
+For instance: 
 ```
-python3 run_model.py -c E116 -rf 0
+python3 run_model.py -c E116 -rf 1
 ```
 
-This will run our model for the cell line E116 and for binary classification. The inputs to these flags can be changed so that the model can run for different cell lines as well as for regression. The run_model.py file can be viewed for documentation on other flags that can be used, and certain settings for the model can be tinkered with.
+This will run our model for the cell line E116 and for the regression task. The inputs to these flags can be changed so that the model can run for different cell lines as well as for either classification or regression. Please see the documentation in the run_models_.py file for additional flag options.
 
 **Datasets:**  
-To run the preparatory script (process_inputs.py) on the GM12878/E116 example cell line, additional raw data files must be downloaded from the Google drive link appended below. Please see the documentation within process_inputs.py for more details about the required files that would need to be downloaded for use with other cell lines. Furthermore, we have provided the processed data files for GM12878/E116, so that the main model (run_model.py) can be directly run on the processed data for the example. This processed data is also available in the data directory for K562/E123 and HUVEC/E122.
+To run the preparatory script (process_inputs_.py) on the E116 example cell line, additional raw data files must be downloaded from the Google drive link appended below. Please see the documentation within process_inputs_.py for more details about the required files that would need to be downloaded for use with other cell lines. However, for users who are chiefly interested in exploring the model itself, we have provided the processed data sets for E116, such that the main program (run_models_.py) can be directly run on the processed data for this example. Processed data sets are also available in the data directory for E123 and E122.
 
 https://drive.google.com/drive/folders/1pWMZC-3mdkWyAoa6b-CnrHpgjPIyUVZv?usp=sharing
 
