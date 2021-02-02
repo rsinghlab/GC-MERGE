@@ -12,7 +12,7 @@ Numpy, scipy, sklearn, pandas, ordered_set, PyTorch, PyTorch Geometric
 **Folder navivgation:**  
 **1) ./src** contains the source code (.py) as well as spreadsheets to which model evaluation metrics and statistics are written to when running our model.
 **2) ./src/data** contains raw data files (.csv).  
-**3) ./src/data/E116** contains processed data files (.npy, .npz, .pkl) for cell line E116 and analogously for cell lines E122 and E123.
+**3) ./src/data/E116** contains processed data files (.npy, .npz, .pkl) for cell line E116 and analogously for cell lines E122 and E123.  
 **4) ./src/data/E116/saved_runs** contains outputs from an example run (.pt, .csv, .txt) and analogously for cell lines E122 and E123.
 
 To run the tool from the user's local machine, the setup of the directory structure should be the same as in this repository (except where "E116" is replaced by the name of the relevant cell line).
