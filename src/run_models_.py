@@ -524,11 +524,11 @@ G = data
 
 ###Define convolutional and linear layer input/output sizes
 graph_conv_layer_sizes = [num_feat] + \
-    [max(int(graph_conv_embed_size//2**(i-1)), lin_hidden_size) \
+    [max(int(graph_conv_embed_size, lin_hidden_size)) \
           for i in np.arange(1, num_graph_conv_layers, 1)] + [lin_hidden_size]
         
 lin_hidden_sizes = [graph_conv_layer_sizes[-1]] + \
-    [max(int(lin_hidden_size//2**(i-1)), num_classes) \
+    [max(int(lin_hidden_size, num_classes)) \
           for i in np.arange(1, num_lin_layers, 1)] + [num_classes]
 
 
