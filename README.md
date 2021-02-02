@@ -17,7 +17,7 @@ Numpy, scipy, sklearn, pandas, ordered_set, PyTorch, PyTorch Geometric
 
 To run the tool from the user's local machine, the setup of the directory structure should be the same as in this repository (except where "E116" is replaced by the name of the relevant cell line).
 
-To run the model, simply run the command below
+To run the model, simply run the command below from the src directory:
 
 ```
 python3 run_model.py -c E116 -rf 0
