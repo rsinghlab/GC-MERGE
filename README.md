@@ -1,6 +1,6 @@
 # Graph Convolutional Model for Epigenetic Regulation of Gene Expression (GC-MERGE)
 
-![](./assets/model_architecture_ghub.png")
+![](./assets/model_arch.png")
 
 GC-MERGE is a Python tool that implements a graph convolutional neural network framework to integrate spatial genomic information together with histone modification data to predict gene expression. The methodology for this tool is detailed in the pre-print: "Integrating long-range regulatory interactions to predict gene expression using graph convolutional neural networks" (https://www.biorxiv.org/content/10.1101/2020.11.23.394478v3).
 
