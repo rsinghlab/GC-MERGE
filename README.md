@@ -21,7 +21,7 @@ To run the model, simply run the program on the command line from the src direco
 
 For instance: 
 ```
-python3 run_model.py -c E116 -rf 1
+python3 run_models_.py -c E116 -rf 1
 ```
 
 This will run our model for the cell line E116 and for the regression task. The inputs to these flags can be changed so that the model can run for different cell lines as well as for either classification or regression. Please see the documentation in the run_models_.py file for additional flag options.
