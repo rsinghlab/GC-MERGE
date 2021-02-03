@@ -9,7 +9,7 @@ Usage: python ./run_model_.py [-c <str>] [-rf <int>] [-e <int>] [-lr <float>]
 Arguments:
     '-c', '--cell_line', default='E116', type=str
     '-rf', '--regression_flag', default=1 (1 = regression; 0 = classification), type=int
-    '-me', '--max_epoch', default=1000,type=int) 
+    '-e', '--max_epoch', default=1000,type=int) 
     '-lr', '--learning_rate', default=1e-4, type=float)
     '-cn', '--num_graph_conv_layers', default=2, type=int)
     '-gs', '--graph_conv_layer_size', default=256, type=int)
@@ -524,11 +524,11 @@ G = data
 
 ###Define convolutional and linear layer input/output sizes
 graph_conv_layer_sizes = [num_feat] + \
-    [max(int(graph_conv_embed_size, lin_hidden_size)) \
+    [int(max(graph_conv_embed_size, lin_hidden_size)) \
           for i in np.arange(1, num_graph_conv_layers, 1)] + [lin_hidden_size]
         
 lin_hidden_sizes = [graph_conv_layer_sizes[-1]] + \
-    [max(int(lin_hidden_size, num_classes)) \
+    [int(max(lin_hidden_size, num_classes)) \
           for i in np.arange(1, num_lin_layers, 1)] + [num_classes]
 
 
