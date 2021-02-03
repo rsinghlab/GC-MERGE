@@ -9,7 +9,7 @@ Usage: python ./run_model_.py [-c <str>] [-rf <int>] [-e <int>] [-lr <float>]
 Arguments:
     '-c', '--cell_line', default='E116', type=str
     '-rf', '--regression_flag', default=1 (1 = regression; 0 = classification), type=int
-    '-e', '--max_epoch', default=1000,type=int) 
+    '-me', '--max_epoch', default=1000,type=int) 
     '-lr', '--learning_rate', default=1e-4, type=float)
     '-cn', '--num_graph_conv_layers', default=2, type=int)
     '-gs', '--graph_conv_layer_size', default=256, type=int)
