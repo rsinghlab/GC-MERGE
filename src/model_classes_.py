@@ -208,33 +208,18 @@ class GCN_classification(nn.Module):
         scores [tensor]: Pre-normalized class scores
 
         '''
-        ### Embedding module
-        if self.num_embed_layers == 0:
-            embed_x = x
-        elif self.num_embed_layers == 1:
-            embed_x = self.embed1(x)
-        elif self.num_embed_layers == 2:
-            embed_x = self.embed1(x)
-            embed_x = torch.relu(embed_x)
-            embed_x = self.embed2(embed_x)
-        elif self.num_embed_layers == 3:
-            embed_x = self.embed1(x)
-            embed_x = torch.relu(embed_x)
-            embed_x = self.embed2(embed_x)
-            embed_x = torch.relu(embed_x)
-            embed_x = self.embed3(embed_x)
 
         ### Graph convolution module
         if self.num_graph_conv_layers == 1:
-            h = self.conv1(embed_x, edge_index)
+            h = self.conv1(x, edge_index)
             h = torch.relu(h)
         elif self.num_graph_conv_layers == 2:
-            h = self.conv1(embed_x, edge_index)
+            h = self.conv1(x, edge_index)
             h = torch.relu(h)
             h = self.conv2(h, edge_index)
             h = torch.relu(h)
         elif self.num_graph_conv_layers == 3:
-            h = self.conv1(embed_x, edge_index)
+            h = self.conv1(x, edge_index)
             h = torch.relu(h)
             h = self.conv2(h, edge_index)
             h = torch.relu(h)
