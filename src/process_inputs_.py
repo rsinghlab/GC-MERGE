@@ -1,14 +1,13 @@
 '''
-process_inputs_.py
+process_inputs.py
 
 Purpose: Prepares preprocessed data files to serve as inputs to the main model
 
-Usage: python ./process_inputs.py [-c <str>] [-k <int>] [-rf <int>]
+Usage: python ./process_inputs.py [-c <str>] [-k <int>]
 
 Arguments:
     '-c', '--cell_line', default='E116', type=str
     '-k', '--num_neighbors', default=10, type=int)
-    '-rf', '--regression_flag', default=1 (1 = regression; 0 = classification), type=int
     
 Preprocessed input files:
     In ./data subdirectory:
@@ -41,15 +40,13 @@ Preprocessed input files:
 Outputs:
     In ./data/cell_line subdirectory:
         ./hic_sparse.npz: Concatenated Hi-C matrix in sparse CSR format
-        ./np_nodes_lab_genes_reg[rf].npy: Numpy array stored in binary format, where 
-            rf denotes regression flag (rf = 1 for regression, 0 for classification);
+        ./np_nodes_lab_genes.npy: Numpy array stored in binary format
             2-column array that stores IDs of nodes corresponding to genes
             and the node label (expression level)
-        ./np_hmods_norm_chip_10000bp.npy: Numpy array stored in binary format;
+        ./np_hmods_norm.npy: Numpy array stored in binary format
             (F+1)-column array where the 0th column contains node IDs
             and columns 1..F contain feature values, where F = total number of features
-        ./df_genes_reg[rf].pkl: Pandas dataframe stored in .pkl format, where 
-            rf denotes regression flag (rf = 1 for regression, 0 for classification);
+        ./df_genes.pkl: Pandas dataframe stored in .pkl format
             5-column dataframe, where columns = [ENSEMBL ID, 
             gene name abbreviation, node ID, expression level, connected status]
     
@@ -202,6 +199,7 @@ def get_hmods(cell_line_dir, cell_line, chr_num, hic_res, chip_res, hic_node_sta
     chr_num [int]: Chromosome number
     hic_res [int]: Hi-C map resolution in base pairs (10000 bp)
     chip_res [int]: ChIP-seq resolution in base pairs (10000 bp)
+
     hic_node_start [int]: New starting coordinate for chromosome 
         concatenated Hi-C matrix
     chrom_start_local [int]: Minimum chromosome coordinate for chromosome's
@@ -225,12 +223,13 @@ def get_hmods(cell_line_dir, cell_line, chr_num, hic_res, chip_res, hic_node_sta
     
     num_chip_feat = hic_res/chip_res 
     
-    for file in os.listdir(dir1_encode):
+    for file in sorted(os.listdir(dir1_encode)):
         
          filename = os.fsdecode(file)
 
-         if filename.startswith('chr' + str(chr_num) + '_' + str(chip_res) + 'bp_') \
-             and filename.endswith('.count'):
+#         if filename.startswith('chr' + str(chr_num) + '_' + str(chip_res) + 'bp_') and filename.endswith('.count'):
+         if filename.startswith('chr' + str(chr_num) + '_' + str(chip_res) + 'bp_') and filename.endswith('.count') and (not ('DNase' in filename)):
+#         if filename.startswith('chr' + str(chr_num) + '_' + str(chip_res) + 'bp_') and filename.endswith('.count') and (not ('H3K27ac' in filename)) and (not ('DNase' in filename)):
                  
              col_name = filename.split('_')[2]
              col_name = col_name.split('.')[0]
@@ -270,10 +269,7 @@ def get_labels(rnaseq_file, cell_line, regression_flag):
 
     Returns
     -------
-    df_labels [dataframe]: Dataframe containing true node expression values 
-        Classification: Binarized 0's (off/inactive) and 1's (on/active)
-        Regression: Base-10 logarithm of RNA-seq count with pseudocount of 1
-            added prior to taking the logarithm
+    df_labels [dataframe]: Dataframe containing true node labels 
 
     '''
     
@@ -328,7 +324,10 @@ def get_gene_coord(gene_coord_file, chr_num, hic_res, hic_node_start, chrom_star
     df_gene_coord['hic_node_id'] = np.floor(hic_node_start +
                   np.divide(df_gene_coord['TSS'].to_numpy() - chrom_start_local, hic_res))
     df_gene_coord['hic_node_id'] = df_gene_coord['hic_node_id'].astype('int32', copy=False)
-
+    
+    # df_gene_coord['hic_node_id'] = np.floor(hic_node_start +
+    #              np.divide(df_gene_coord['TSS'].to_numpy() - chrom_start_local, hic_res)).astype(int)
+    
     df_gene_coord = df_gene_coord[df_gene_coord['hic_node_id'] >= 0]
                      
     df_gene_coord = df_gene_coord.sort_values(by=['hic_node_id'])
@@ -570,12 +569,27 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument('-c', '--cell_line', default='E116', type=str)
 parser.add_argument('-k', '--num_neighbors', default=10, type=int)
-parser.add_argument('-rf', '--regression_flag', default=1, type=int)
+parser.add_argument('-cr', '--chip_resolution', default=10000, type=int)
+parser.add_argument('-rf', '--regression_flag', default=0, type=int)
+#parser.add_argument('-v', '--version', default='_redone', type=str)
+parser.add_argument('-v', '--version', default='_redone_h3k27ac_addition', type=str)
+#parser.add_argument('-v', '--version', default='_redone_h3k27ac_and_dnase_addition', type=str)
+#parser.add_argument('-v', '--version', default='', type=str)
+#parser.add_argument('-v', '--version', default='_h3k27ac_addition', type=str)
+#parser.add_argument('-v', '--version', default='_h3k27ac_and_dnase_addition', type=str)
+parser.add_argument('-sf', '--save_file_flags', default='cr', type=str)
+
+# save_file_flags can be any combination of 'h' (save Hi-C matrix),
+#   'c' (save all ChIP-seq resolution dependent files), and
+#   'r' (save all regression-dependent files)
 
 args = parser.parse_args()
 cell_line = args.cell_line
 kth = args.num_neighbors
+chip_res = args.chip_resolution
 regression_flag = args.regression_flag
+version = args.version
+save_file_flags = args.save_file_flags
     
 if ~isinstance(cell_line, str):
     cell_line = str(cell_line)
@@ -586,9 +600,8 @@ gene_coord_file = os.path.join(base_path, 'data', 'gene_coord.csv')
 cell_line_dir = os.path.join(base_path , 'data', cell_line)
 
 np.random.seed(1)
-chip_res = 10000
 hic_res = 10000
-num_hm = 5
+num_hm = 6
 
 chr_num_low_inc = 1
 chr_num_high_exc = 23
@@ -599,7 +612,7 @@ num_feat_bins = int(hic_res/chip_res)
 np_hmods_norm_all = np.zeros((1, num_hm*num_feat_bins + 1))
     
 
-#Note: 2 columns consisting of [node id, expression level]
+#2 columns: node id, active/inactive label
 np_genes_lab = np.zeros((1, 2))
 
 hic_node_start = 0
@@ -628,6 +641,11 @@ for i in np.arange(chr_num_low_inc, chr_num_high_exc, 1):
         
     np_genes_lab = np.concatenate((np_genes_lab, np_genes_lab_cat), axis=0)
         
+    print("np_hmods_norm_all:")
+    print(np_hmods_norm_all)
+    print("np_hmods_norm:")
+    print(np_hmods_norm)
+    
     np_hmods_norm_all = np.concatenate((np_hmods_norm_all, np_hmods_norm), axis=0)
     
     df_gene_names_ids.append(df_genes_lab_nodup_connected_names_cat)
@@ -646,10 +664,15 @@ for i in np.arange(chr_num_low_inc, chr_num_high_exc, 1):
     duplicate_dict_all.update(duplicate_dict)
 
     
-### Finalizes processed data
+### Finalizes processed data and saves in proper model input form
 # Deletes the first line from each array because it is initialized with a zero row
 np_genes_lab = np.delete(np_genes_lab, 0, axis=0)
 np_hmods_norm_all = np.delete(np_hmods_norm_all, 0, axis=0)
+
+# Finalizes gene-feature-label dataframe
+mask = np.isin(np_hmods_norm_all[:,0], np_genes_lab[:,0])         
+np_genes_hmods_lab = np_hmods_norm_all[mask, :]
+np_genes_hmods_lab = np.concatenate((np_genes_hmods_lab, np.reshape(np_genes_lab[:,-1], (-1, 1))), axis=1)
 
 # Generates sparse csr matrix
 edge_wts_vec = np.array(edge_wts_list)
@@ -657,39 +680,40 @@ riv_vec = np.array(riv_list)
 civ_vec = np.array(civ_list)
 hic_sparse_mat = csr_matrix((edge_wts_vec, (riv_vec, civ_vec)), shape=(hic_node_start, hic_node_start))
 
-# Finalizes gene-feature-label dataframe
-mask = np.isin(np_hmods_norm_all[:,0], np_genes_lab[:,0])         
-np_genes_hmods_lab = np_hmods_norm_all[mask, :]
-np_genes_hmods_lab = np.concatenate((np_genes_hmods_lab, np.reshape(np_genes_lab[:,-1], (-1, 1))), axis=1)
-
-### Saves processed data in proper model input form
-
 df_genes = pd.concat(df_gene_names_ids, axis=0)
 df_genes.rename(columns={"Abbrev": "abbrev"}, inplace=True)
+
+df_node_coord = pd.concat(df_node_coord_list, axis=0)
+df_node_coord.rename(columns={"Abbrev": "abbrev"}, inplace=True)
+
+### Saves processed files
+for flag in save_file_flags:
     
-hic_sparse_mat_file = os.path.join(cell_line_dir, 'hic_sparse.npz')
-save_npz(hic_sparse_mat_file, hic_sparse_mat)
-
-np_hmods_norm_all_file = os.path.join(base_path, 'data', cell_line, \
-    'np_hmods_norm_chip_' + str(chip_res) + 'bp.npy')
-np.save(np_hmods_norm_all_file, np_hmods_norm_all, allow_pickle=True)
-
-np_genes_lab_file = os.path.join(cell_line_dir, 'np_nodes_lab_genes_reg' + \
-    str(regression_flag) + '.npy')
-np.save(np_genes_lab_file, np_genes_lab, allow_pickle=True)
-
-df_genes_file = os.path.join(cell_line_dir, 'df_genes_reg' + str(regression_flag) + '.pkl')   
-df_genes.to_pickle(df_genes_file)
-
-dict_gene_dups_file = os.path.join(cell_line_dir, 'dict_gene_dups_reg' + \
-    str(regression_flag) + '.pkl')   
-dict_gene_dups = open(dict_gene_dups_file,"wb")
-pickle.dump(duplicate_dict_all, dict_gene_dups)
-dict_gene_dups.close()
-
-
-
-
-
-
+    if flag == 'h':
+        hic_sparse_mat_file = os.path.join(cell_line_dir, 'hic_sparse' + version + '.npz')
+        save_npz(hic_sparse_mat_file, hic_sparse_mat)
     
+    elif flag == 'c':
+    
+        np_hmods_norm_all_file = os.path.join(cell_line_dir, 'np_hmods_norm_chip_' + \
+            str(chip_res) + 'bp' + version + '.npy')
+        np.save(np_hmods_norm_all_file, np_hmods_norm_all, allow_pickle=True)
+
+        df_node_coord_file = os.path.join(cell_line_dir,  \
+                                           'df_node_coord' + version + '.pkl')
+        df_node_coord.to_pickle(df_node_coord_file)
+        
+    elif flag == 'r':
+        np_genes_lab_file = os.path.join(cell_line_dir, 'np_nodes_lab_genes_reg' + \
+            str(regression_flag) + version + '.npy')
+        np.save(np_genes_lab_file, np_genes_lab, allow_pickle=True)
+
+        df_genes_file = os.path.join(cell_line_dir, 'df_genes_reg' + str(regression_flag) + version + '.pkl')
+        df_genes.to_pickle(df_genes_file)
+        
+        dict_gene_dups_file = os.path.join(cell_line_dir, 'dict_gene_dups_reg' + \
+            str(regression_flag) + version + '.pkl')
+        dict_gene_dups = open(dict_gene_dups_file,"wb")
+        pickle.dump(duplicate_dict_all, dict_gene_dups)
+        dict_gene_dups.close()
+
