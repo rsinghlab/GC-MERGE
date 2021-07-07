@@ -426,7 +426,7 @@ random_seed = args.random_seed
 
 chip_res = 10000
 hic_res = 10000
-num_hm = 5
+num_hm = 6
 num_feat = int((hic_res/chip_res)*num_hm)
 
 if regression_flag == 0:
