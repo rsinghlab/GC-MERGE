@@ -43,15 +43,20 @@ Please kindly cite our work if you make use of GC-MERGE or parts of its codebase
   
 **BibTex:**  
 ```
-@article {GC-MERGE_2020,
+@article{GC_MERGE,
+	title = {Integrating {Long}-{Range} {Regulatory} {Interactions} to {Predict} {Gene} {Expression} {Using} {Graph} {Convolutional} {Networks}},
+	volume = {29},
+	issn = {1557-8666},
+	url = {https://www.liebertpub.com/doi/10.1089/cmb.2021.0316},
+	doi = {10.1089/cmb.2021.0316},
+	language = {en},
+	number = {5},
+	urldate = {2022-04-10},
+	journal = {Journal of Computational Biology},
 	author = {Bigness, Jeremy and Loinaz, Xavier and Patel, Shalin and Larschan, Erica and Singh, Ritambhara},
-	title = {Integrating long-range regulatory interactions to predict gene expression using graph convolutional neural networks},
-	elocation-id = {2020.11.23.394478},
-	year = {2020},
-	doi = {10.1101/2020.11.23.394478},
-	URL = {https://www.biorxiv.org/content/10.1101/2020.11.23.394478v3},
-	eprint = {https://www.biorxiv.org/content/10.1101/2020.11.23.394478v3.full.pdf},
-	journal = {bioRxiv}
+	month = mar,
+	year = {2022},
+	pages = {1--16},
 }
 ```
 
