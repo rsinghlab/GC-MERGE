@@ -2,7 +2,7 @@
 
 <img src="https://github.com/rsinghlab/GC-MERGE/blob/main/assets/model_summary_g2.png" s=400>
 
-GC-MERGE is a Python tool that implements a graph convolutional neural network framework to integrate spatial genomic information together with histone modification data to predict gene expression. The methodology for this tool is detailed in the pre-print: "Integrating long-range regulatory interactions to predict gene expression using graph convolutional neural networks" (https://www.biorxiv.org/content/10.1101/2020.11.23.394478v3).
+GC-MERGE is a Python tool that implements a graph convolutional neural network framework to integrate spatial genomic information together with histone modification data to predict gene expression. The methodology for this tool is detailed in our paper, "Integrating long-range regulatory interactions to predict gene expression using graph convolutional neural networks," published in the Journal of Computational Biology (https://www.liebertpub.com/doi/10.1089/cmb.2021.0316?url_ver=Z39.88-2003&rfr_id=ori%3Arid%3Acrossref.org&rfr_dat=cr_pub++0pubmed).
 
 In this repository, we provide four programs as well as example datasets for three cell lines (E116/GM1287, E123/K562, and E122/HUVEC). The first program is a preparatory script (process_inputs_.py) to process the raw data into a form that can be used by the second program. The second program is the main program (run_models_.py), which also calls on two more auxiliary programs (model_classes_.py and sage_conv_cat_.py). Please see the code documentation within each program for additional details.
 
@@ -39,7 +39,7 @@ https://drive.google.com/drive/folders/1pWMZC-3mdkWyAoa6b-CnrHpgjPIyUVZv?usp=sha
 **Citation:**  
 Please kindly cite our work if you make use of GC-MERGE or parts of its codebase in your research.
 
-	Bigness, J., Loinaz, X., Patel, S., Larschan, E. & Singh, R. Integrating long-range regulatory interactions to predict gene expression using graph convolutional neural networks. http://biorxiv.org/lookup/doi/10.1101/2020.11.23.394478 (2020) doi:10.1101/2020.11.23.394478.  
+	Bigness, J., Loinaz, X., Patel, S., Larschan, E. & Singh, R. Integrating Long-Range Regulatory Interactions to Predict Gene Expression Using Graph Convolutional Networks. Journal of Computational Biology 29, 1–16 (2022).
   
 **BibTex:**  
 ```
